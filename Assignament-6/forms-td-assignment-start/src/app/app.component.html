@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+       <form (ngSubmit)="onSubmit()" #f="ngForm" >
+         <div id="componentFormGroup" ngModelGroup="componentFormGroup" #componentFormGroup="ngModelGroup">
+           <div id="email-data">
+             <div class="form-group">
+               <label for="mail-address"> Mail Address</label>
+               <input
+                 type="email"
+                 id="mail-address"
+                 class="form-control"
+                 name="email"
+                 required
+                 email
+                 ngModel
+                 #email="ngModel"
+               >
+               <span class="help-block" *ngIf="!email.valid && email.touched"> Enter Valid Email!</span>
+
+               <label for="dropdown-subscription"> Subscription </label>
+               <select
+                 id="dropdown-subscription"
+                 class="form-control"
+                 name="subscription"
+                 [ngModel]="default_dropdown"
+               >
+                 <option value="Basic">Basic</option>
+                 <option value="Advanced">Advanced</option>
+                 <option value="Pro">Pro</option>
+               </select>
+             </div>
+             <div class="form-group">
+               <label for="password"> Password </label>
+               <input
+                 type="password"
+                 name="password"
+                 id="password"
+                 class="form-control"
+                 required
+                 ngModel
+               >
+             </div>
+             <button
+               class="btn-primary btn"
+               type="submit"
+               [disabled]="!f.valid"
+             >Submit</button>
+           </div>
+         </div>
+       </form>
+
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <p> Mail: {{ getMail() }} </p>
+      <p> Subscription: {{ getSubscription() }} </p>
+      <p> Password: {{ getPassword() }} </p>
+    </div>
+  </div>
+</div>
