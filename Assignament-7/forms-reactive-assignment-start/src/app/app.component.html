@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="project-name">Project Name</label>
+          <input
+            id="project-name"
+            type="text"
+            class="form-control"
+            formControlName="project_name">
+        </div>
+        <div class="form-group">
+          <label for="project-email">Email</label>
+          <input
+            id="project-email"
+            type="text"
+            class="form-control"
+            formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="dropdown-subscription"> Subscription </label>
+          <select
+            id="dropdown-subscription"
+            class="form-control"
+            name="status"
+            formControlName="status"
+            >
+            <option *ngFor="let opt of options; let i=index;" [ngValue]=i>{{ opt }} </option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
